@@ -25,9 +25,9 @@ do
     Brazier1 = false
     Brazier2 = false
     Brazier3 = false
-    Sec = 0.0000000001
-    ClickState = 0.00001
-    Num_self = 3000
+    Sec = 0.0000000000000000001
+    ClickState = 0.000000000001
+    Num_self = 3000000000000
 end
 
 repeat
