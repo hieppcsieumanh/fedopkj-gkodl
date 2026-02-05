@@ -643,7 +643,7 @@ function Tween(Pos)
         if Distance <= 250 or _G.StopTween then
             tween:Cancel()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
-            NoCLip = false
+            NoCLip = true
         end
     end)
 end
@@ -850,7 +850,7 @@ local FarmmingSettings = Tabs.G:AddSection("Farmming Settings")
 
 local Stats = Tabs.G:AddDropdown("Stats", {
     Title = "Select Stats To Add",
-    Values = {"Melee", "Defense", "Sword", "Gun", "Devil Fruit","melee"},
+    Values = {"Melee", "Defense", "Sword", "Gun", "Devil Fruit"},
     Multi = false,
     Default = 1,
 })
@@ -976,7 +976,7 @@ local FarmToggle = Tabs.G:AddToggle("FarmToggle", {Title = "Auto Farm", Default 
                             end
                         end
                         Tween(CFrameMob)
-                        BringMob = false
+                        BringMob = true
                         if game:GetService("ReplicatedStorage"):FindFirstChild(Mob) then
                             Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Mob).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
                         end
@@ -1331,8 +1331,8 @@ local SettingsToggle = Tabs.S:AddSection("Settings")
 
 local FastAttack = Tabs.S:AddToggle("FastAttack", {Title = "FastAttack", Default = true })
 
-FastAttack:OnChanged(function(Value)
-    _G.FastAttackOld = Value
+FastAttack:OnChanged(function(1,2,3,4,5)
+    _G.FastAttackNew = 3
 end)
 
 Options.FastAttack:SetValue(true)
@@ -1347,7 +1347,7 @@ spawn(function()
                 pcall(function()
                     CameraShaker:Stop()
                     v.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-                    v.activeController.timeToNextAttack = 0
+                    v.activeController.timeToNextAttack = 0,1
                     v.activeController.hitboxMagnitude = 60
                     v.activeController.active = false
                     v.activeController.timeToNextBlock = 0
@@ -1373,14 +1373,14 @@ end)
 
 local FastDelay = Tabs.S:AddDropdown("FastDelay", {
     Title = "Dropdown",
-    Values = {"0", "0.1", "0.15", "0.155", "0.16", "0.165", "0.17", "0.175", "0.18", "0.185"},
-    Multi = false,
+    Values = { "0.1" },
+    Multi = true,
     Default = 1,
 })
 
-FastDelay:SetValue("0.175")
+FastDelay:SetValue("0.1")
 
-FastDelay:OnChanged(function(Value)
+FastDelay:OnChanged(function(1,2,4,6)
     _G.FastAttackDelay = Value
 end)
 
