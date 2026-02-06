@@ -1,4 +1,4 @@
--- No Skid
+- No Skid
 if game.PlaceId == 2753915549 then
     taodangosea1 = true
 elseif game.PlaceId == 4442272183 then
@@ -643,7 +643,7 @@ function Tween(Pos)
         if Distance <= 250 or _G.StopTween then
             tween:Cancel()
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
-            NoCLip = true
+            NoCLip = false
         end
     end)
 end
@@ -803,9 +803,9 @@ Tabs.I:AddParagraph({
 
 Tabs.I:AddButton({
     Title = "Join My Discord",
-    Description = "Click the button to join Discord 'conmemay hub #1000 Member ' ",
+    Description = "Click the button to join Discord 'Night Hub #1000 Member ' ",
     Callback = function()
-        setclipboard("https://discord.gg/vukJbStn")
+        setclipboard("https://discord.gg/R4xC3t2Xm8")
     end
 })
 
@@ -976,7 +976,7 @@ local FarmToggle = Tabs.G:AddToggle("FarmToggle", {Title = "Auto Farm", Default 
                             end
                         end
                         Tween(CFrameMob)
-                        BringMob = true
+                        BringMob = false
                         if game:GetService("ReplicatedStorage"):FindFirstChild(Mob) then
                             Tween(game:GetService("ReplicatedStorage"):FindFirstChild(Mob).HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
                         end
@@ -1153,7 +1153,7 @@ spawn(function()
                         end
                     end
                 else
-                    StartCheckBone = true
+                    StartCheckBone = false
                     for i, v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do 
                         if v.Name == "Reborn Skeleton" then
                             Tween(v.HumanoidRootPart.CFrame * CFrame.new(2, 20, 2))
@@ -1331,8 +1331,8 @@ local SettingsToggle = Tabs.S:AddSection("Settings")
 
 local FastAttack = Tabs.S:AddToggle("FastAttack", {Title = "FastAttack", Default = true })
 
-FastAttack:OnChanged(function(1,2,3,4,5)
-    _G.FastAttackNew = 3
+FastAttack:OnChanged(function(Value)
+    _G.FastAttackOld = Value
 end)
 
 Options.FastAttack:SetValue(true)
@@ -1347,7 +1347,7 @@ spawn(function()
                 pcall(function()
                     CameraShaker:Stop()
                     v.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-                    v.activeController.timeToNextAttack = 0,1
+                    v.activeController.timeToNextAttack = 0
                     v.activeController.hitboxMagnitude = 60
                     v.activeController.active = false
                     v.activeController.timeToNextBlock = 0
@@ -1373,14 +1373,14 @@ end)
 
 local FastDelay = Tabs.S:AddDropdown("FastDelay", {
     Title = "Dropdown",
-    Values = { "0.1" },
-    Multi = true,
+    Values = {"0", "0.1", "0.15", "0.155", "0.16", "0.165", "0.17", "0.175", "0.18", "0.185"},
+    Multi = false,
     Default = 1,
 })
 
-FastDelay:SetValue("0.1")
+FastDelay:SetValue("0.175")
 
-FastDelay:OnChanged(function(1,2,4,6)
+FastDelay:OnChanged(function(Value)
     _G.FastAttackDelay = Value
 end)
 
@@ -1444,7 +1444,7 @@ function Damchetcuno()
         bladehit = cac
         if #bladehit > 0 then
             pcall(function()
-                CmrFwLib.activeController.timeToNextAttack = 0,1
+                CmrFwLib.activeController.timeToNextAttack = 1
                 CmrFwLib.activeController.attacking = false
                 CmrFwLib.activeController.blocking = false
                 CmrFwLib.activeController.timeToNextBlock = 0
